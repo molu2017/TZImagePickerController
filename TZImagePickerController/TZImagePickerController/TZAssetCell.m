@@ -166,7 +166,11 @@
     if (_bigImageRequestID) {
         [[PHImageManager defaultManager] cancelImageRequest:_bigImageRequestID];
     }
-    
+    if (_model.asset.mediaType == TZAssetModelMediaTypeVideo) {
+        NSLog(@"video")
+    } else {
+        NSLog(@"picture")
+    }
     _bigImageRequestID = [[TZImageManager manager] requestImageDataForAsset:_model.asset completion:^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
         [self hideProgressView];
     } progressHandler:^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
