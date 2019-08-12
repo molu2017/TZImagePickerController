@@ -540,7 +540,9 @@ static CGFloat itemMargin = 5;
     __weak typeof(_numberImageView.layer) weakLayer = _numberImageView.layer;
     cell.didSelectPhotoBlock = ^(BOOL isSelected) {
         
-        NSLog(@"didSelectPhotoBlock");
+        if (model.type == TZAssetModelMediaTypeVideo) {
+            return;
+        }
         __strong typeof(weakCell) strongCell = weakCell;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         __strong typeof(weakLayer) strongLayer = weakLayer;
