@@ -539,6 +539,8 @@ static CGFloat itemMargin = 5;
     __weak typeof(self) weakSelf = self;
     __weak typeof(_numberImageView.layer) weakLayer = _numberImageView.layer;
     cell.didSelectPhotoBlock = ^(BOOL isSelected) {
+        
+        NSLog(@"didSelectPhotoBlock");
         __strong typeof(weakCell) strongCell = weakCell;
         __strong typeof(weakSelf) strongSelf = weakSelf;
         __strong typeof(weakLayer) strongLayer = weakLayer;
@@ -598,6 +600,7 @@ static CGFloat itemMargin = 5;
     }
     TZAssetModel *model = _models[index];
     if (model.type == TZAssetModelMediaTypeVideo && !tzImagePickerVc.allowPickingMultipleVideo) {
+        NSLog(@"TZAssetModelMediaTypeVideo");
         if (tzImagePickerVc.selectedModels.count > 0) {
             TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
             [imagePickerVc showAlertWithTitle:[NSBundle tz_localizedStringForKey:@"Can not choose both video and photo"]];
@@ -607,6 +610,7 @@ static CGFloat itemMargin = 5;
             [self.navigationController pushViewController:videoPlayerVc animated:YES];
         }
     } else if (model.type == TZAssetModelMediaTypePhotoGif && tzImagePickerVc.allowPickingGif && !tzImagePickerVc.allowPickingMultipleVideo) {
+        NSLog(@"TZAssetModelMediaTypePhotoGif");
         if (tzImagePickerVc.selectedModels.count > 0) {
             TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
             [imagePickerVc showAlertWithTitle:[NSBundle tz_localizedStringForKey:@"Can not choose both photo and GIF"]];
@@ -616,6 +620,7 @@ static CGFloat itemMargin = 5;
             [self.navigationController pushViewController:gifPreviewVc animated:YES];
         }
     } else {
+        NSLog(@"other");
         TZPhotoPreviewController *photoPreviewVc = [[TZPhotoPreviewController alloc] init];
         photoPreviewVc.currentIndex = index;
         photoPreviewVc.models = _models;
