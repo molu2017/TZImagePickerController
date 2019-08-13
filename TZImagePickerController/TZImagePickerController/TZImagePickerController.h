@@ -282,6 +282,11 @@
 // Decide asset show or not't
 // 决定照片显示与否
 - (BOOL)isAssetCanSelect:(PHAsset *)asset;
+
+- (void)photoPickerController:(TZImagePickerController *)picker didSelectedWithVideo:(UIImage *)coverImage sourceAssets:(PHAsset *)asset;
+
+- (void)photoPickerController:(TZImagePickerController *)picker didSelectedWithVideoError:(NSString *)message;
+
 @end
 
 

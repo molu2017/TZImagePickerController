@@ -135,7 +135,7 @@
 }
 
 - (void)selectPhotoButtonClick:(UIButton *)sender {
-    NSLog(@"selectPhotoButtonClick");
+    
     if (self.didSelectPhotoBlock) {
         self.didSelectPhotoBlock(sender.isSelected);
     }

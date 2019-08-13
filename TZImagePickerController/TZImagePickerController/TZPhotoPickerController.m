@@ -545,9 +545,21 @@ static CGFloat itemMargin = 5;
             if (tzImagePickerVc.selectedModels.count > 0) {
                 // 有已选的图片,直接提示用户不能同时选择
                 NSLog(@"有已选的图片");
+//                [self.videoSelectedDelegate photoPickerController:self didSelectedWithVideoError:@""];
+//                if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:)]) {
+//                    [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:_isSelectOriginalPhoto];
+//                }
+                if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(photoPickerController:didSelectedWithVideoError:)]) {
+                    [tzImagePickerVc.pickerDelegate photoPickerController:tzImagePickerVc didSelectedWithVideoError:@"不能同时选择视频和图片"];
+                }
             } else {
                 // 没有已选图片,直接使用当前选择视频
                 NSLog(@"没有已选图片");
+//                [self.videoSelectedDelegate photoPickerController:self didSelectedWithVideo:NULL sourceAssets:
+//                 model.asset];
+                if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(photoPickerController:didSelectedWithVideo:sourceAssets:)]) {
+                    [tzImagePickerVc.pickerDelegate photoPickerController:tzImagePickerVc didSelectedWithVideo:NULL sourceAssets:model.asset];
+                }
             }
             return;
         }
