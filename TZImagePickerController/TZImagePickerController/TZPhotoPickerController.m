@@ -547,7 +547,7 @@ static CGFloat itemMargin = 5;
                 NSLog(@"有已选的图片");
             } else {
                 // 没有已选图片,直接使用当前选择视频
-                NSLog(@"没有已选图片")
+                NSLog(@"没有已选图片");
             }
             return;
         }
