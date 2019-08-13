@@ -540,7 +540,15 @@ static CGFloat itemMargin = 5;
     __weak typeof(_numberImageView.layer) weakLayer = _numberImageView.layer;
     cell.didSelectPhotoBlock = ^(BOOL isSelected) {
         
+        // 得到用户点击的资源,如果是视频则
         if (model.type == TZAssetModelMediaTypeVideo) {
+            if (tzImagePickerVc.selectedModels.count > 0) {
+                // 有已选的图片,直接提示用户不能同时选择
+                NSLog(@"有已选的图片");
+            } else {
+                // 没有已选图片,直接使用当前选择视频
+                NSLog(@"没有已选图片")
+            }
             return;
         }
         __strong typeof(weakCell) strongCell = weakCell;
